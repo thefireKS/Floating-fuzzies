@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Hero : MonoBehaviour
@@ -18,7 +19,7 @@ public class Hero : MonoBehaviour
 
     private void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.GetMouseButton(0))
         {
             Rotation(GetNewAngle());
         }
@@ -26,8 +27,8 @@ public class Hero : MonoBehaviour
 
     private Quaternion GetNewAngle()
     {
-        Touch touch = Input.GetTouch(0);
-        var ray = _mainCamera.ScreenPointToRay(touch.position);
+        Vector2 mp = Input.mousePosition;
+        var ray = _mainCamera.ScreenPointToRay(mp);
         Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, layerMask);
         Vector3 direction = (hitInfo.point - transform.position).normalized;
         return Quaternion.LookRotation(direction);
@@ -43,6 +44,4 @@ public class Hero : MonoBehaviour
         rotation = Quaternion.Lerp(rotation, lookRotation, donePercentage);
         transform.rotation = rotation;
     }
-    
-    
 }
