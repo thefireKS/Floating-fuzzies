@@ -1,6 +1,7 @@
 using PathCreation;
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class EnemyAI : MonoBehaviour
 
     private Rigidbody _rigidbody;
     
-    private PathCreator _pathCreator;
+    public PathCreator pathCreator;
     [SerializeField] private float loopCount;
 
     [SerializeField] private float speed;
@@ -25,18 +26,17 @@ public class EnemyAI : MonoBehaviour
     private bool isAttacking;
     private float attackTimer = 0f;
 
-    private void OnEnable()
+    private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _target = GameObject.FindGameObjectWithTag("Boat");
-        _pathCreator = FindObjectOfType<PathCreator>();
-        _distanceTravelled = _pathCreator.path.GetClosestDistanceAlongPath(transform.position);
+        _distanceTravelled = pathCreator.path.GetClosestDistanceAlongPath(transform.position);
         _distanceStart = _distanceTravelled;
     }
 
     private void Update()
     {
-        if((_distanceTravelled - _distanceStart) / _pathCreator.path.length > loopCount)
+        if((_distanceTravelled - _distanceStart) / pathCreator.path.length > loopCount)
         {
             GoToBoat();
         }
@@ -53,17 +53,25 @@ public class EnemyAI : MonoBehaviour
 
     private void GoToBoat()
     {
-        transform.LookAt(_target.transform);
+        ChangeRotation();
         _rigidbody.AddRelativeForce(Vector3.forward * speed, ForceMode.Force);
         if (_rigidbody.velocity.magnitude > speed)
             _rigidbody.velocity = _rigidbody.velocity.normalized * speed;
+    }
+    
+    private void ChangeRotation()
+    {
+        Vector3 direction = (_target.transform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        lookRotation = new Quaternion(transform.rotation.x, lookRotation.y, 0, lookRotation.w);
+        transform.rotation = lookRotation;
     }
 
     private void FollowPath()
     {
         _distanceTravelled += speed * Time.deltaTime;
-        transform.position = _pathCreator.path.GetPointAtDistance(_distanceTravelled);
-        transform.rotation = _pathCreator.path.GetRotationAtDistance(_distanceTravelled);
+        transform.position = pathCreator.path.GetPointAtDistance(_distanceTravelled);
+        transform.rotation = pathCreator.path.GetRotationAtDistance(_distanceTravelled);
     }
 
     private void OnCollisionEnter(Collision collision)
