@@ -48,7 +48,4 @@ public class Tower : MonoBehaviour
             Shoot();
         }
     }
-
-
-
 }
