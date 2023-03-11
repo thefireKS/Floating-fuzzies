@@ -1,5 +1,6 @@
 using PathCreation;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,6 +13,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float timeBetweenSpawns;
     private float _timeSinceLastSpawn = Mathf.Infinity;
 
+    private float timeElapsed = 0f;
+
     private void OnEnable()
     {
         _pathCreator = FindObjectOfType<PathCreator>();
@@ -21,6 +24,13 @@ public class EnemySpawner : MonoBehaviour
     {
         if (_timeSinceLastSpawn >= timeBetweenSpawns) Spawn();
         _timeSinceLastSpawn += Time.deltaTime;
+        timeElapsed += Time.deltaTime;
+
+        if (timeElapsed > 15f && timeBetweenSpawns > 0.5f)
+        {
+            timeBetweenSpawns -= 0.25f;
+            timeElapsed = 0f;
+        }
     }
 
     private void Spawn()
