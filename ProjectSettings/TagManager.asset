@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Boat
+  - Item
   layers:
   - Default
   - TransparentFX

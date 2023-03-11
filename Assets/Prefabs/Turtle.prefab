@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2797575742338902036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.4278445, y: 5.6476197, z: -5.5595}
+  m_LocalPosition: {x: 6.4278445, y: 5.6476197, z: -5.476}
   m_LocalScale: {x: 0.6, y: 0.5, z: 1.0189201}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9710183b4ebf1954eb20e04d2970ff09, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,8 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba88d53d4eb3294439c4e507e89f4b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loopCount: 5
-  speed: 1
+  pathCreator: {fileID: 0}
+  loopCount: 2
+  speed: 2
   damage: 1
   attackCooldown: 10
 --- !u!114 &2797575742338902035
@@ -157,8 +158,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2797575742551136852}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.1378907}
-  m_LocalScale: {x: 1.6666665, y: 2, z: 0.9814313}
+  m_LocalPosition: {x: 0, y: 0, z: -0.39}
+  m_LocalScale: {x: 1.6666665, y: 2, z: 1.154065}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2797575742338902046}
@@ -192,7 +193,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: d158c2261b4f7474ba2f6bf93f1d2816, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -239,4 +240,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7c1bb1d30ecdd4c874523a102bfb07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 20
+  maxHitPoints: 30
