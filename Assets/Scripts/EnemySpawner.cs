@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
         var pointIndex = Random.Range(0, _pathCreator.path.NumPoints - 1);
         var pointToSpawn = _pathCreator.path.GetPoint(pointIndex);
         var enemyToSpawn = enemies[Random.Range(0, enemies.Length - 1)];
-        Instantiate(enemyToSpawn, pointToSpawn, quaternion.identity);
+        Instantiate(enemyToSpawn, pointToSpawn, quaternion.identity, transform);
         _timeSinceLastSpawn = 0f;
     }
 }
