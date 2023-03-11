@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -11,11 +10,6 @@ public class Gun : MonoBehaviour
     private float _timeSinceLastShot = Mathf.Infinity;
     
     private bool CanShoot() => _timeSinceLastShot >= 1f / (roundsPerMinute / 60f);
-
-    private void Start()
-    {
-        Debug.Log(1f / (roundsPerMinute / 60f));
-    }
 
     private void Shoot()
     {
