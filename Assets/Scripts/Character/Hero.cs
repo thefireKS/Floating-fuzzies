@@ -10,15 +10,19 @@ public class Hero : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
 
     private Camera _mainCamera;
+    private Animator _animator;
 
     private void OnEnable()
     {
         _mainCamera = Camera.main;
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+        var click = Input.GetMouseButton(0);
+        _animator.SetBool("IsAttacking", click);
+        if (click)
         {
             Rotation(GetNewAngle());
         }

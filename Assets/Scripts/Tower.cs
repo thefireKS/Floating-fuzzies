@@ -11,7 +11,14 @@ public class Tower : MonoBehaviour
     
     [SerializeField] private int roundsPerMinute;
     private float _timeSinceLastShot = Mathf.Infinity;
-    
+
+    private Animator _animator;
+
+    private void OnEnable()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
     private bool CanShoot() => _timeSinceLastShot >= 1f / (roundsPerMinute / 60f);
 
     private void Shoot()
@@ -35,6 +42,7 @@ public class Tower : MonoBehaviour
     {
         _timeSinceLastShot += Time.fixedDeltaTime;
         if (enemiesHolderTransform.childCount > 0) _target = enemiesHolderTransform.GetChild(0).gameObject;
+        _animator.SetBool("IsAttacking", _target != null);
         if (_target != null)
         {
             Shoot();
