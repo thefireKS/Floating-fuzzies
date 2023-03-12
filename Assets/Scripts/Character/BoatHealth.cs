@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,13 @@ public class BoatHealth : MonoBehaviour
     [SerializeField] private int fullHealth;
     private int currentHealth;
 
+    public static Action<float> updateHealth;
+    public static Action loseGame;
+
     private void Start()
     {
         currentHealth = fullHealth;
+        updateHealth?.Invoke((float)currentHealth / fullHealth);
     }
 
     private void OnEnable() => EnemyAI.OnDamageDeal += ChangeHealth;
@@ -18,12 +23,8 @@ public class BoatHealth : MonoBehaviour
     private void ChangeHealth(int damageDealt)
     {
         currentHealth -= damageDealt;
-        Debug.Log(currentHealth);
-    }
-
-    private void Update()
-    {
+        updateHealth?.Invoke((float)currentHealth / fullHealth);
         if (currentHealth <= 0)
-            Debug.Log("You lose");
+            loseGame?.Invoke();
     }
 }
