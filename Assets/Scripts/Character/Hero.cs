@@ -4,9 +4,6 @@ public class Hero : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed;
 
-    private float _currentAngle, _targetAngle;
-    private float _elapsedTime;
-
     [SerializeField] private LayerMask layerMask;
 
     private Camera _mainCamera;

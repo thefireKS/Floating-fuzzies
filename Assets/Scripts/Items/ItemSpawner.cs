@@ -10,12 +10,10 @@ public class ItemSpawner : MonoBehaviour
     private float timer = 0f;
 
     private BoxCollider _boxCollider;
-    private float boxColliderSize;
 
     private void Start()
     {
         _boxCollider = GetComponent<BoxCollider>();
-        boxColliderSize = _boxCollider.size.magnitude;
     }
 
     private void Update()
