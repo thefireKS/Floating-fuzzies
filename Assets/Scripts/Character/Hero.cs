@@ -17,6 +17,8 @@ public class Hero : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale < 1f) return;
+
         var click = Input.GetMouseButton(0);
         _animator.SetBool("IsAttacking", click);
         if (click)

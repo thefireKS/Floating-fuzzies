@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1280709468985890072}
   - component: {fileID: 4417146582964663766}
   m_Layer: 6
-  m_Name: Ammo
+  m_Name: WaterAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 64e2b59136d6df84eb33c9b44cb540df, type: 2}
+  - {fileID: 2100000, guid: ddf91aeb6ee35a94e90d49b5851c32fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,8 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f04df96e05aecd449ba585c2794f4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 40
-  damage: 2
+  force: 30
+  damage: 1
 --- !u!65 &4417146582964663766
 BoxCollider:
   m_ObjectHideFlags: 0
